@@ -20,7 +20,7 @@ public class Ejercicio01 {
         System.out.println("Ingrese una palabra");
         palabra = entrada.nextLine();
         for (int i = 0; i<palabra.length();i++){
-            System.out.print(palabra.substring(i, (i+1))+ " ");
+            System.out.print(palabra.substring(i, (i + 1))+ " ");
         }
     }
     

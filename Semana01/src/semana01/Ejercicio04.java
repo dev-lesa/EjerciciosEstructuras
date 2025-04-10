@@ -4,8 +4,6 @@
  */
 package semana01;
 
-import java.util.Scanner;
-
 /**
  *
  * @author utpl
@@ -15,7 +13,6 @@ public class Ejercicio04 {
     public static void main(String[] args) {
         String cadena = "Universidad Tecnica";
         cadena = cadena.toLowerCase();
-        Scanner entrada = new Scanner(System.in);
         int contador = 0;
         for (int i = 0; i < cadena.length(); i++) {
             String letraPalabra = cadena.substring(i, (i + 1));

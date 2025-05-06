@@ -17,35 +17,59 @@ public class Semana5Matriz {
      */
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        System.out.println("ingrese el tamaño del arreglo");
+        System.out.println("Ingrese el tamaño del arreglo cuadrado");
         int tamaño = entrada.nextInt();
-        int[][] arreglo = new int[tamaño][tamaño];
-        int aux;
-        for (int i = 0; i < arreglo.length; i++) {
-            for (int j = 0; j < arreglo[i].length; j++) {
-                arreglo[i][j] = (int) (Math.random() * 10);
+        int[][] A = new int[tamaño][tamaño];
+
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < A[i].length; j++) {
+                A[i][j] = (int) (Math.random() * 10);
             }
         }
 
-        System.out.println("arreglo original");
-        presentarArreglo(arreglo);
+        System.out.println("Matriz original A");
+        presentarArreglo(A);
+
+        int[][] B = transpuesta(A);
+
+        System.out.println("Matriz transpuesta B");
+        presentarArreglo(B);
+
+        int[][] resultado = multiplicarMatrices(A, B);
+
+        System.out.println("Multiplicación de A x B");
+        presentarArreglo(resultado);
+    }
+
+    public static int[][] transpuesta(int[][] arreglo) {
+        int[][] transpuesta = new int[arreglo[0].length][arreglo.length];
         for (int i = 0; i < arreglo.length; i++) {
-            for (int j = i+1; j < arreglo[i].length; j++) {
-                aux = arreglo[i][j];
-                arreglo[i][j] = arreglo[j][i];
-                arreglo[j][i] = aux;
+            for (int j = 0; j < arreglo[0].length; j++) {
+                transpuesta[j][i] = arreglo[i][j];
             }
         }
-        
-        System.out.println("arreglo traspuesto");
-        presentarArreglo(arreglo);
+        return transpuesta;
     }
-    public static void presentarArreglo (int[][] arreglo){
-        for (int i = 0; i < arreglo.length; i++) {
-            for (int j = 0; j < arreglo[i].length; j++) {
-                System.out.print("[ " + arreglo[i][j] + " ] ");
+
+    public static int[][] multiplicarMatrices(int[][] A, int[][] B) {
+        int filas = A.length;
+        int columnas = A[0].length;
+        int[][] resultado = new int[filas][columnas];
+
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                resultado[i][j] = A[i][j] * B[i][j];
             }
-            System.out.println("");
+        }
+        return resultado;
+    }
+
+    public static void presentarArreglo(int[][] arreglo) {
+        for (int[] fila : arreglo) {
+            for (int valor : fila) {
+                System.out.print("[ " + valor + " ] ");
+            }
+            System.out.println();
         }
     }
 
